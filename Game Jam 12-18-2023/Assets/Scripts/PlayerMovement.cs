@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jump;
 
     [Header("References")]
-    public CharacterController controller;
-    public Transform cam;
+    [SerializeField] private Transform cam;
 
     [Header("Movement")]
     public float speed;
@@ -21,15 +20,22 @@ public class PlayerMovement : MonoBehaviour
     public float gravity;
     public float jumpSpeed = 15;
 
+    CharacterController controller;
+
     float turnSmoothVelocity;
     Vector3 moveVelocity;
+
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Movement();
     }
@@ -48,14 +54,11 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
+            // direction player is moving
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDirection.normalized * speed * Time.deltaTime);
 
-            // Player will sprint while holding shift
-            if (Input.GetKey(sprint))
-            {
-                controller.Move(moveDirection.normalized * speed * spritingMultipler * Time.deltaTime);
-            }
+            // move player
+            controller.Move(speed * Time.deltaTime * moveDirection.normalized);
         }
 
         if (controller.isGrounded)
