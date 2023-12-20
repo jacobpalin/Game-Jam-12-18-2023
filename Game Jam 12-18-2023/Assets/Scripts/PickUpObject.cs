@@ -16,11 +16,14 @@ public class PickUpObject : MonoBehaviour
     public void PickUp(Transform snapLocation)
     {
         pickUp.position = snapLocation.position;
+        pickUp.parent = snapLocation;
+
         rb.useGravity = false;
     }
 
     public void DropObject()
     {
+        pickUp.parent = null;
         rb.useGravity = true;
     }
 }
