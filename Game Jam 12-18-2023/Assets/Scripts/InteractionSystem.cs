@@ -9,23 +9,31 @@ public class InteractionSystem : MonoBehaviour
     public Transform snapLocation;
     public LayerMask objectMask;
 
-    private void FixedUpdate()
+    private PickUpObject pickUpObject;
+
+    private void Update()
     {
-        if(Physics.Raycast(playerCamera.position, playerCamera.forward, pickUpDistance, objectMask))
+        if (pickUpObject == null)
         {
-            Debug.Log("Can Pick Up");
-
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, pickUpDistance, objectMask))
             {
-                Debug.Log("Picked Up");
+                Debug.Log(hit.transform);
 
-                if (TryGetComponent(out PickUpObject pickUpObject))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log("Grabbed");
-
-                    pickUpObject.PickUp(snapLocation);
+                    if (hit.transform.TryGetComponent(out pickUpObject))
+                    {
+                        pickUpObject.PickUp(snapLocation);
+                    }
                 }
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            pickUpObject.DropObject();
+
+            pickUpObject = null;
         }
     }
 }
