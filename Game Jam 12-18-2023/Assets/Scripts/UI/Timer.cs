@@ -8,8 +8,13 @@ public class Timer : MonoBehaviour
     [Header("Bools")]
     [SerializeField] private bool countDown;
     public bool gameEnded;
+    
+    [Header("UI Elements")]
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI finalTimeText;
+    [SerializeField] private TextMeshProUGUI gradeText;
 
-    [Header("Variables")]
+    [Header("Other")]
     [SerializeField] private float gameTimer;
     private float timer;
     [SerializeField] private string endGameTextString;
@@ -19,11 +24,6 @@ public class Timer : MonoBehaviour
     [SerializeField] private float secondsForGradeC;
     [SerializeField] private float secondsForGradeD;
 
-    [Header("UI Elements")]
-    [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private TextMeshProUGUI finalTimeText;
-    [SerializeField] private TextMeshProUGUI gradeText;
-    // Start is called before the first frame update
     void Start()
     {
         finalTimeText.gameObject.SetActive(false);
@@ -35,7 +35,6 @@ public class Timer : MonoBehaviour
         timer = gameTimer;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!gameEnded)
