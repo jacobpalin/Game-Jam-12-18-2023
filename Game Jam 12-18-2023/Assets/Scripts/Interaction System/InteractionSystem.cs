@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class InteractionSystem : MonoBehaviour
 {
-    public float pickUpDistance;
-    public Transform playerCamera;
-    public Transform snapLocation;
-    public LayerMask objectMask;
+    [Header("Distance to Pick Up")]
+    [SerializeField] private float pickUpDistance;
+
+    [Header("Camera and Snap Transform")]
+    [SerializeField] private Transform playerCamera;
+    [SerializeField] private Transform snapLocation;
+
+    [Header("Interaction Layer")]
+    [SerializeField] private LayerMask objectMask;
+    public LayerMask placeMask;
+
+    public float placeDistance;
 
     private PickUpObject pickUpObject;
+    RaycastHit hit;
 
     private void Update()
     {
         if (pickUpObject == null)
         {
-            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, pickUpDistance, objectMask))
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, pickUpDistance, objectMask))
             {
                 Debug.Log(hit.transform);
 
