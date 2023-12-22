@@ -19,11 +19,13 @@ public class PickUpObject : MonoBehaviour
         pickUp.parent = snapLocation;
 
         rb.useGravity = false;
+        rb.isKinematic = true;
     }
 
     public void DropObject()
     {
         pickUp.parent = null;
         rb.useGravity = true;
+        rb.isKinematic = false;
     }
 }
