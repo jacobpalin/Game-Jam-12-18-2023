@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour
             {
                 timer -= Time.deltaTime;
             }
-            DisplayTime(timer);
+            DisplayTime(timer); 
         }
         else if (gameEnded)
         {
@@ -55,8 +55,8 @@ public class Timer : MonoBehaviour
             gradeText.gameObject.SetActive(true);
             finalTimeText.gameObject.SetActive(true);
             finalTimeText.text = endGameTextString + timerText.text;
-            GradingSystem(timer);
         }
+        GradingSystem(timer);
     }
 
     private void DisplayTime(float timeToDisplay)
@@ -71,22 +71,32 @@ public class Timer : MonoBehaviour
         if(secondsTaken <= secondsForGradeA)
         {
             gradeText.text = "A";
+            timerText.color = Color.cyan;
+            gradeText.color = Color.cyan;
         }
         else if(secondsTaken > secondsForGradeA && secondsTaken <= secondsForGradeB)
         {
             gradeText.text = "B";
+            timerText.color = Color.green;
+            gradeText.color = Color.green;
         }
         else if (secondsTaken > secondsForGradeB && secondsTaken <= secondsForGradeC)
         {
             gradeText.text = "C";
+            timerText.color = Color.yellow;
+            gradeText.color = Color.yellow;
         }
         else if (secondsTaken > secondsForGradeC && secondsTaken <= secondsForGradeD)
         {
             gradeText.text = "D";
+            timerText.color = Color.red;
+            gradeText.color = Color.red;
         }
         else if (secondsTaken > secondsForGradeD)
         {
             gradeText.text = "F";
+            timerText.color = Color.red;
+            gradeText.color = Color.red;
         }
     }
 }
