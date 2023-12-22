@@ -13,11 +13,10 @@ public class InteractionSystem : MonoBehaviour
 
     [Header("Interaction Layer")]
     [SerializeField] private LayerMask objectMask;
-    public LayerMask placeMask;
 
-    public float placeDistance;
+    [Header("DO NOT DRAG ANYTHING INTO THIS")]
+    public PickUpObject pickUpObject;
 
-    private PickUpObject pickUpObject;
     RaycastHit hit;
 
     private void Update()
