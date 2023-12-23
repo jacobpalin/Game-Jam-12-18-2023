@@ -8,6 +8,9 @@ TagManager:
   - Red
   - Green
   - Purple
+  - CinemachineTarget
+  - DeerDoorTag
+  - DeerTag
   layers:
   - Default
   - TransparentFX
