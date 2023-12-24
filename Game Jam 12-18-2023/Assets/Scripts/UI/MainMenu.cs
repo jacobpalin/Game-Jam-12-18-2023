@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(mainLevelString);
     }
 
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
     public void CreditsButton()
     {
         mainMenu.SetActive(false);
