@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    public Transform pickUp;
+    private Transform pickUp;
 
     Rigidbody rb;
 
     private void Awake()
     {
+        pickUp = this.gameObject.transform;
         rb = GetComponent<Rigidbody>();
     }
 

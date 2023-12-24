@@ -11,6 +11,15 @@ TagManager:
   - CinemachineTarget
   - DeerDoorTag
   - DeerTag
+  - Nut
+  - Cheese
+  - RedNose
+  - Cookie
+  - GumDropButton
+  - CandyCane
+  - Button
+  - MiniStar
+  - Carrot
   layers:
   - Default
   - TransparentFX
