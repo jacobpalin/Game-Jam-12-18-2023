@@ -17,6 +17,13 @@ public class PlaceObject : MonoBehaviour
     [Header("Deliveries")]
     public bool delivered;
 
+    AudioSource auidoSource;
+
+    private void Awake()
+    {
+        auidoSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(tagName))
@@ -29,11 +36,14 @@ public class PlaceObject : MonoBehaviour
             other.transform.parent = placeTransform;
 
             interactionSystem.pickUpObject = null;
+            // interactionSystem.riddles = null;
 
-            pickUpObject.objecPickedUp = false;
+            interactionSystem.riddles.ResetRiddle();
 
             delivered = true;
             interactionSystem.GetComponent<DeliveriesDone>().UpdateDeliveryBool();
+
+            auidoSource.Play();
         }
         else
         {

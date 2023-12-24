@@ -17,6 +17,7 @@ public class InteractionSystem : MonoBehaviour
 
     [Header("DO NOT DRAG ANYTHING INTO THIS")]
     public PickUpObject pickUpObject;
+    public Riddles riddles;
 
     [SerializeField] private Image corsshair;
 
@@ -33,9 +34,11 @@ public class InteractionSystem : MonoBehaviour
 
                 if (Input.GetMouseButton(0))
                 {
-                    if (hit.transform.TryGetComponent(out pickUpObject))
+                    if (hit.transform.TryGetComponent(out pickUpObject) && hit.transform.TryGetComponent(out riddles))
                     {
                         pickUpObject.PickUp(snapLocation);
+
+                        riddles.SetRiddle();
                     }
 
                     corsshair.color = Color.green;
@@ -50,6 +53,7 @@ public class InteractionSystem : MonoBehaviour
         if(Input.GetMouseButton(1))
         {
             pickUpObject.DropObject();
+            riddles.ResetRiddle();
 
             pickUpObject = null;
         }
