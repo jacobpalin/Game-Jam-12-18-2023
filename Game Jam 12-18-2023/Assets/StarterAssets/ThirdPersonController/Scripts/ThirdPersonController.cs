@@ -274,6 +274,9 @@ namespace StarterAssets
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+            // animations for move go here
+
+
             // update animator if using character
             if (_hasAnimator)
             {
@@ -313,6 +316,8 @@ namespace StarterAssets
 
                     //jumpVFX.SetActive(true);
                     Debug.Log("Jumped");
+
+                    // aniamtions for jump go here
 
                     // update animator if using character
                     if (_hasAnimator)
