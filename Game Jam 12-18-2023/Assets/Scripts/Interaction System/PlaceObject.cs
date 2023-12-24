@@ -22,7 +22,9 @@ public class PlaceObject : MonoBehaviour
             //Debug.Log("Entered");
 
             other.transform.position = placeTransform.position;
-            other.transform.parent = null;
+            other.transform.rotation = placeTransform.rotation;
+
+            other.transform.parent = placeTransform;
 
             interactionSystem.pickUpObject = null;
 

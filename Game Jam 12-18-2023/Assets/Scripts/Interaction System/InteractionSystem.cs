@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionSystem : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class InteractionSystem : MonoBehaviour
     [Header("DO NOT DRAG ANYTHING INTO THIS")]
     public PickUpObject pickUpObject;
 
+    [SerializeField] private Image corsshair;
+
     RaycastHit hit;
 
     private void Update()
@@ -26,18 +29,25 @@ public class InteractionSystem : MonoBehaviour
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, pickUpDistance, objectMask))
             {
                 //Debug.Log(hit.transform);
+                corsshair.color = Color.red;
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetMouseButton(0))
                 {
                     if (hit.transform.TryGetComponent(out pickUpObject))
                     {
                         pickUpObject.PickUp(snapLocation);
                     }
+
+                    corsshair.color = Color.green;
                 }
+            }
+            else
+            {
+                corsshair.color = Color.green;
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.G))
+        if(Input.GetMouseButton(1))
         {
             pickUpObject.DropObject();
 

@@ -75,6 +75,9 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [Space]
+        public GameObject jumpVFX;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -286,6 +289,9 @@ namespace StarterAssets
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
 
+                jumpVFX.SetActive(false);
+                Debug.Log("Grounded");
+
                 // update animator if using character
                 if (_hasAnimator)
                 {
@@ -304,6 +310,9 @@ namespace StarterAssets
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+                    jumpVFX.SetActive(true);
+                    Debug.Log("Jumped");
 
                     // update animator if using character
                     if (_hasAnimator)

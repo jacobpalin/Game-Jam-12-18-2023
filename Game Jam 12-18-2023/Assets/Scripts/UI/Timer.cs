@@ -24,6 +24,8 @@ public class Timer : MonoBehaviour
     [SerializeField] private float secondsForGradeC;
     [SerializeField] private float secondsForGradeD;
 
+    public bool isTimerOn;
+
     void Start()
     {
         finalTimeText.gameObject.SetActive(false);
@@ -33,29 +35,36 @@ public class Timer : MonoBehaviour
             gameTimer = 0;
         }
         timer = gameTimer;
+
+        timerText.text = "";
     }
 
     void Update()
     {
-        if (!gameEnded)
+        if(isTimerOn == true)
         {
-            if (!countDown)
+            if (!gameEnded)
             {
-                timer += Time.deltaTime;
+                if (!countDown)
+                {
+                    timer += Time.deltaTime;
+                }
+                else if (countDown)
+                {
+                    timer -= Time.deltaTime;
+                }
+                
+                DisplayTime(timer);
             }
-            else if (countDown)
+            else if (gameEnded)
             {
-                timer -= Time.deltaTime;
+                timerText.gameObject.SetActive(false);
+                gradeText.gameObject.SetActive(true);
+                finalTimeText.gameObject.SetActive(true);
+                finalTimeText.text = endGameTextString + timerText.text;
             }
-            DisplayTime(timer); 
         }
-        else if (gameEnded)
-        {
-            timerText.gameObject.SetActive(false);
-            gradeText.gameObject.SetActive(true);
-            finalTimeText.gameObject.SetActive(true);
-            finalTimeText.text = endGameTextString + timerText.text;
-        }
+
         GradingSystem(timer);
     }
 

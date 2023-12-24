@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    private Transform pickUp;
-
+    Transform pickUp;
     Rigidbody rb;
+
+    public GameObject startingText;
+
+    public Timer timer;
 
     private void Awake()
     {
-        pickUp = this.gameObject.transform;
+        pickUp = gameObject.transform;
         rb = GetComponent<Rigidbody>();
     }
 
     public void PickUp(Transform snapLocation)
     {
         pickUp.position = snapLocation.position;
+        pickUp.rotation = snapLocation.rotation;
         pickUp.parent = snapLocation;
+
+        timer.isTimerOn = true;
+        startingText.SetActive(false);
 
         rb.useGravity = false;
         rb.isKinematic = true;
