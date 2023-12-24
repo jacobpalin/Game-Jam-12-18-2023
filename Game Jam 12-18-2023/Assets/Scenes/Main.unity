@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pick Up Object: RMB'
+  m_text: 'Drop Object: RMB'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 57dd3171c9705524db82bbab97cb1a38, type: 2}
   m_sharedMaterial: {fileID: 2788605989962370442, guid: 57dd3171c9705524db82bbab97cb1a38, type: 2}
@@ -4701,9 +4701,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To Start the game, pick up any of the items in front of the fire place.
-    a riddle will appear  for which location the item needs to go. the item will
-    actomatically go to the location when you are close enough. good luck!
+  m_text: 'Pick up any of the items in front of the fireplace. A riddle will appear
+    for the location the item needs to go. The item will automatically go to the
+    location when you are close enough.
+
+    Good luck!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 57dd3171c9705524db82bbab97cb1a38, type: 2}
   m_sharedMaterial: {fileID: 2788605989962370442, guid: 57dd3171c9705524db82bbab97cb1a38, type: 2}
