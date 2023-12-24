@@ -77,6 +77,7 @@ namespace StarterAssets
 
         [Space]
         //public GameObject jumpVFX;
+        //public Transform jumpVFXSpot;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -314,7 +315,8 @@ namespace StarterAssets
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    //jumpVFX.SetActive(true);
+                    //Instantiate(jumpVFX, jumpVFXSpot);
+                    //Destroy(jumpVFX, .2f);
                     Debug.Log("Jumped");
 
                     // aniamtions for jump go here
