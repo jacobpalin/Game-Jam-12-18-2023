@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlaceObject : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlaceObject : MonoBehaviour
     [SerializeField] private string tagName;
     [Space]
     [SerializeField] private InteractionSystem interactionSystem;
+    public PickUpObject pickUpObject;
 
     [Header("Deliveries")]
     public bool delivered;
@@ -27,6 +29,8 @@ public class PlaceObject : MonoBehaviour
             other.transform.parent = placeTransform;
 
             interactionSystem.pickUpObject = null;
+
+            pickUpObject.objecPickedUp = false;
 
             delivered = true;
             interactionSystem.GetComponent<DeliveriesDone>().UpdateDeliveryBool();
