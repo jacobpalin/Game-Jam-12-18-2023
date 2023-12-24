@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject playerUI;
     [SerializeField] private bool gamePaused;
     [SerializeField] private string mainMenuSceneString;
     [SerializeField] private GameObject player;
@@ -24,6 +25,7 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
+            playerUI.SetActive(false);
             gamePaused = !gamePaused;
             player.GetComponent<StarterAssets.ThirdPersonController>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
@@ -32,6 +34,7 @@ public class Pause : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Escape) && gamePaused)
         {
             pauseScreen.SetActive(false);
+            playerUI.SetActive(true);
             gamePaused = !gamePaused;
             Time.timeScale = 1;
             player.GetComponent<StarterAssets.ThirdPersonController>().enabled = true;

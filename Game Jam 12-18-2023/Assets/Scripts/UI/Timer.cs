@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI finalTimeText;
     [SerializeField] private TextMeshProUGUI gradeText;
+    [SerializeField] private GameObject mainMenuButton;
 
     [Header("Other")]
     [SerializeField] private float gameTimer;
@@ -30,6 +31,8 @@ public class Timer : MonoBehaviour
     {
         finalTimeText.gameObject.SetActive(false);
         gradeText.gameObject.SetActive(false);
+        mainMenuButton.SetActive(false);
+
         if (!countDown)
         {
             gameTimer = 0;
@@ -61,6 +64,8 @@ public class Timer : MonoBehaviour
                 timerText.gameObject.SetActive(false);
                 gradeText.gameObject.SetActive(true);
                 finalTimeText.gameObject.SetActive(true);
+                mainMenuButton.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
                 finalTimeText.text = endGameTextString + timerText.text;
             }
         }

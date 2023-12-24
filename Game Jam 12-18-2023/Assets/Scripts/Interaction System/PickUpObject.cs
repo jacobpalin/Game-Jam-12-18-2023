@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    [Header("Riddles")]
-    public string riddle;
-    public TextMeshProUGUI uiRiddleText;
-
     [Header("Start Game Text")]
     public GameObject startingText;
 
@@ -18,24 +14,11 @@ public class PickUpObject : MonoBehaviour
     Transform pickUp;
     Rigidbody rb;
 
-    public bool objecPickedUp = false;
 
     private void Awake()
     {
         pickUp = gameObject.transform;
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        if(objecPickedUp == true)
-        {
-            uiRiddleText.text = riddle;
-        }
-        else
-        {
-            uiRiddleText.text = "";
-        }
     }
 
     public void PickUp(Transform snapLocation)
@@ -49,8 +32,6 @@ public class PickUpObject : MonoBehaviour
 
         rb.useGravity = false;
         rb.isKinematic = true;
-
-        objecPickedUp = true;
     }
 
     public void DropObject()
@@ -58,7 +39,5 @@ public class PickUpObject : MonoBehaviour
         pickUp.parent = null;
         rb.useGravity = true;
         rb.isKinematic = false;
-
-        objecPickedUp = false;
     }
 }
